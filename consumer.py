@@ -3,10 +3,6 @@ import os
 import threading
 from header import Header
 from collections import defaultdict
-#import re
-# import pygame
-
-# pygame.init()
 
 # Packet types
 PACKET_TYPE_SUBSCRIPTION = 'S'
@@ -14,8 +10,7 @@ PACKET_TYPE_PUBLICATION = 'P'
 PACKET_TYPE_ACKNOWLEDGMENT = 'A'
 PACKET_TYPE_UNSUBSCRIPTION = 'U'
 
-SAVE_PATH = "C:\\Users\\eliel\\Documents\\College\\3rd year\\Computer Networks\\Notes & Assignments\\Assignment " \
-            "1\\SaveImages "
+SAVE_PATH = # Path to save Images / Audio chunks
 
 # Consumer configuration
 CONSUMER_IP = "consumer"
