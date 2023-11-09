@@ -3,10 +3,6 @@ import os
 import threading
 from header import Header
 from collections import defaultdict
-#import re
-# import pygame
-
-# pygame.init()
 
 # Packet types
 PACKET_TYPE_SUBSCRIPTION = 'S'
@@ -14,8 +10,7 @@ PACKET_TYPE_PUBLICATION = 'P'
 PACKET_TYPE_ACKNOWLEDGMENT = 'A'
 PACKET_TYPE_UNSUBSCRIPTION = 'U'
 
-SAVE_PATH = "C:\\Users\\eliel\\Documents\\College\\3rd year\\Computer Networks\\Notes & Assignments\\Assignment " \
-            "1\\SaveImages "
+SAVE_PATH = # Path to save Image / Audio chunks
 
 # Consumer configuration
 CONSUMER_IP = "consumer2"
@@ -80,17 +75,10 @@ while True:
     try:
         action = input("Enter an action (subscribe, unsubscribe, exit): ")
 
-        # The rest of the logic for subscribe, unsubscribe and exit...
         if action.lower() == 'exit':
             break
         elif action.lower() == 'subscribe':
-            topic = input("Enter a topic to subscribe (e.g., ABCD01): ")  # Changed the example
-            # match = re.search(r'ABCD(\d{2})$', topic)
-            # if match:
-            #     topic = match.group(1)
-            # else:
-            #     print("Invalid topic name.")
-            #     continue
+            topic = input("Enter a topic to subscribe (e.g., ABCD01): ")  
             topic = topic[-2:].zfill(2)
             print(f"sending topic: {topic}")
             subscription_header = Header(PACKET_TYPE_SUBSCRIPTION, "ABCD99", "00", topic, "00", 0)
@@ -98,8 +86,8 @@ while True:
             consumer2_socket.sendto(subscription_header.to_bytes(), broker_address)
             print(f"Subscribed to topic: {topic}")
         elif action.lower() == 'unsubscribe':
-            topic = input("Enter a topic to unsubscribe (e.g., ABCD01): ")  # Changed the example
-            topic = topic[-2:].zfill(2)  # This line can be removed
+            topic = input("Enter a topic to unsubscribe (e.g., ABCD01): ")  
+            topic = topic[-2:].zfill(2)  
             unsubscription_header = Header(PACKET_TYPE_UNSUBSCRIPTION, "000000", "00", topic, "00", 0)
             consumer2_socket.sendto(unsubscription_header.to_bytes(), broker_address)
             print(f"Unsubscribed from topic: {topic}")
